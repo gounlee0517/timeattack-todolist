@@ -45,6 +45,19 @@ function App() {
     setTodos(newDoneTodo);
   };
 
+  const TodoList = ({item, onDeleteHandler, onDoneHandler}) => {
+    return (
+      <div key={item.id}>
+        <h3>{item.title}</h3>
+        <p>{item.content}</p>
+        <button onClick={() => onDeleteHandler(item.id)}>삭제</button>
+        <button onClick={() => onDoneHandler(item.id)}>
+          {item.isDone ? "취소" : "완료"}
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
       <header>
@@ -100,18 +113,6 @@ function App() {
     </>
   );
 
-  const TodoList = ({item, onDeleteHandler, onDoneHandler}) => {
-    return (
-      <div key={item.id}>
-        <h3>{item.title}</h3>
-        <p>{item.content}</p>
-        <button onClick={() => onDeleteHandler(item.id)}>삭제</button>
-        <button onClick={() => onDoneHandler(item.id)}>
-          {item.isDone ? "취소" : "완료"}
-        </button>
-      </div>
-    );
-  };
 }
 
 export default App;
